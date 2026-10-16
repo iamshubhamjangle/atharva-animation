@@ -1,19 +1,20 @@
 import { createIcons, Play, Pause, RotateCcw, Maximize, Download, Flower2, ArrowUpRight, Check, X, Film, Leaf, Sparkles } from 'lucide';
+import { CONFIG } from '../config';
 export const chapters = [
   { time: 0, title: 'A world waiting', end: 7 }, { time: 7, title: 'The little journey', end: 18 },
   { time: 18, title: 'A special delivery', end: 28 }, { time: 28, title: 'A touch of magic', end: 37 },
-  { time: 37, title: 'A name to remember', end: 45 }, { time: 45, title: 'Welcome, little one', end: 60 },
+  { time: 37, title: 'A name to remember', end: 45 }, { time: 45, title: 'Welcome, little one', end: CONFIG.duration },
 ];
 export function createUI() {
   document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <header class="site-header"><a class="wordmark" href="./" aria-label="Little Worlds home"><span class="brand-symbol"><i data-lucide="flower-2"></i></span>little worlds<span class="wordmark-dot">.</span></a><span class="header-note">Small beginnings. Endless possibilities.</span><span class="edition">A film for Atharva <i data-lucide="sparkles"></i></span></header>
     <main>
-      <div class="page-heading"><div><h1>A very special delivery.</h1><p>A little adventure to welcome a whole new world of love.</p></div><div class="film-spec"><i data-lucide="film"></i><span>THE NAME REVEAL FILM<br><b>60 seconds of something wonderful</b></span></div></div>
+      <div class="page-heading"><div><h1>A very special delivery.</h1><p>A little adventure to welcome a whole new world of love.</p></div><div class="film-spec"><i data-lucide="film"></i><span>THE NAME REVEAL FILM<br><b>${CONFIG.duration} seconds · A little magic, on repeat</b></span></div></div>
       <div class="studio">
         <section class="preview-area" aria-label="Animation preview">
           <div id="video-frame" class="video-frame"><canvas id="scene" width="1920" height="1080" aria-label="A miniature floating island, a courier, and a magical name reveal for Atharva"></canvas><div id="loading" class="loading"><span class="loading-flower"><i data-lucide="flower-2"></i></span><span>Making a little magic…</span></div></div>
           <div class="frame-caption"><span class="live-dot"></span><span id="frame-state">Ready when you are</span><span class="frame-format">1920 × 1080 <span> / </span> 16:9 LANDSCAPE</span></div>
-          <div class="timeline-panel"><div class="timeline-meta"><span id="chapter-label">A world waiting</span><span class="timecode"><b id="current-time">00:00</b><span> / 01:00</span></span></div><label class="sr-only" for="scrubber">Story timeline in seconds</label><input id="scrubber" class="scrubber" type="range" min="0" max="60" value="0" step="0.01" aria-valuetext="0 seconds of 60"/><div class="ruler"><span>00:00</span><span>00:15</span><span>00:30</span><span>00:45</span><span>01:00</span></div></div>
+          <div class="timeline-panel"><div class="timeline-meta"><span id="chapter-label">A world waiting</span><span class="timecode"><b id="current-time">00:00</b><span> / ${timecode(CONFIG.duration)}</span></span></div><label class="sr-only" for="scrubber">Story timeline in seconds</label><input id="scrubber" class="scrubber" type="range" min="0" max="${CONFIG.duration}" value="0" step="0.01" aria-valuetext="0 seconds of ${CONFIG.duration}"/><div class="ruler">${[0, .25, .5, .75, 1].map(fraction => `<span>${timecode(CONFIG.duration * fraction)}</span>`).join('')}</div></div>
           <div class="chapter-list" aria-label="Story chapters">${chapters.map((c, i) => `<button class="chapter ${i === 0 ? 'active' : ''}" data-time="${c.time}" aria-label="Seek to ${c.title}, ${c.time} seconds"><span class="chapter-number">0${i + 1}</span><span>${c.title}</span><span class="chapter-line"></span></button>`).join('')}</div>
         </section>
         <aside class="controls" aria-label="Playback and export controls"><div class="control-heading"><h2>Your little cinema</h2><span>Made to be watched together.</span></div>
@@ -27,7 +28,7 @@ export function createUI() {
           <div class="export-heading"><h3>Keep this little memory</h3><p>A clean, full-HD film to share with the people you love.</p></div>
           <div class="export-format"><span>WebM · 1080p</span><label for="fps" class="sr-only">Recording frame rate</label><select id="fps"><option value="60">60 FPS</option><option value="30">30 FPS</option></select></div>
           <button id="export" class="export-button"><i data-lucide="download"></i><span>Export the film</span></button><a id="download" class="download-link" hidden download="Welcome-Atharva-1080p.webm"><i data-lucide="check"></i>Download your film<i data-lucide="arrow-up-right"></i></a>
-          <p id="export-status" class="export-note" role="status">Records the full 60-second story.<br>Keep this tab visible while it records.</p>
+          <p id="export-status" class="export-note" role="status">Records one complete ${CONFIG.duration}-second loop.<br>Keep this tab visible while it records.</p>
           <div class="keyboard-note"><kbd>space</kbd> play / pause <span>·</span> <kbd>←</kbd><kbd>→</kbd> seek</div>
         </aside>
       </div>
@@ -48,7 +49,7 @@ export const timecode = (t: number) => `${String(Math.floor(t / 60)).padStart(2,
 export function updateTime(t: number, playing: boolean, recording: boolean) {
   document.querySelector('#current-time')!.textContent = timecode(t);
   const index = chapters.findIndex(c => t < c.end); const chapter = index < 0 ? 5 : index;
-  document.querySelector('#chapter-label')!.textContent = chapters[chapter].title;
+  document.querySelector('#chapter-label')!.textContent = t >= CONFIG.timings.departure ? 'A gentle return · ready for another adventure' : chapters[chapter].title;
   document.querySelectorAll('.chapter').forEach((e, i) => { e.classList.toggle('active', i === chapter); e.classList.toggle('complete', t >= chapters[i].end); if (i === chapter) e.setAttribute('aria-current', 'step'); else e.removeAttribute('aria-current'); });
-  document.querySelector('#frame-state')!.textContent = recording ? 'Recording your little memory…' : t >= 60 ? 'Welcome to the world, Atharva' : playing ? 'A little magic in motion' : t > 0 ? 'A moment to take it all in' : 'Ready when you are';
+  document.querySelector('#frame-state')!.textContent = recording ? 'Recording your little memory…' : t >= CONFIG.timings.departure ? 'A gentle return to the beginning' : playing ? 'A little magic in motion · looping' : t > 0 ? 'A moment to take it all in' : 'Ready when you are';
 }

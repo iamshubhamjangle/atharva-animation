@@ -189,13 +189,13 @@
       },
       {
         "name": "story-duration",
-        "value": "60s",
-        "purpose": "Single deterministic GSAP story clock; camera remains fixed orthographic."
+        "value": "72s",
+        "purpose": "Deterministic GSAP story clock; infinite preview loops with a hidden reset; export captures one cycle. Camera remains fixed orthographic."
       },
       {
         "name": "final-hold",
         "value": "45–60s",
-        "purpose": "All seven letters remain readable; final frame holds indefinitely."
+        "purpose": "All seven letters remain readable for 15 seconds, then dissolve before the hidden reset."
       },
       {
         "name": "ambient-clock",
@@ -260,7 +260,7 @@
       "name": "Story scrubber",
       "kind": "input",
       "description": "Seconds-based deterministic story seek control.",
-      "html": "<label class=\"ds-range-label\">Story timeline<input class=\"ds-scrubber\" type=\"range\" min=\"0\" max=\"60\" step=\"0.01\" value=\"0\" aria-label=\"Story timeline in seconds\"></label>",
+      "html": "<label class=\"ds-range-label\">Story timeline<input class=\"ds-scrubber\" type=\"range\" min=\"0\" max=\"72\" step=\"0.01\" value=\"0\" aria-label=\"Story timeline in seconds\"></label>",
       "css": ".ds-range-label{display:block;font:400 12px 'DM Sans',sans-serif;color:var(--ink,#35544a)}.ds-scrubber{width:100%;display:block;height:3px;appearance:none;border-radius:2px;--progress:0%;background:linear-gradient(to right,#63856a var(--progress),#dfe4d6 var(--progress));margin:18px 0 11px;cursor:pointer;accent-color:#557960}.ds-scrubber::-webkit-slider-thumb{appearance:none;width:11px;height:11px;border-radius:50%;background:#557960;border:2px solid #f7f6f0;box-shadow:0 0 0 1px #557960}.ds-scrubber::-moz-range-thumb{width:8px;height:8px;border-radius:50%;background:#557960;border:2px solid #f7f6f0}.ds-scrubber:focus-visible{outline:2px solid #aa6f58;outline-offset:5px}"
     }
   ],

@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { box, sphere } from '../utils/geometry';
+import { box, sphere, createFader } from '../utils/geometry';
 export function createGiftBox() {
   const group = new THREE.Group();
   box(group, [.54, .43, .5], '#edcca0', [0, .23, 0]);
@@ -12,5 +12,6 @@ export function createGiftBox() {
   const glowMaterial = new THREE.MeshBasicMaterial({ color: '#ffe3a1', transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending });
   const glow = sphere(group, [.5, .75, .5], glowMaterial, [0, .55, 0]); glow.castShadow = false;
   const light = new THREE.PointLight('#ffce72', 0, 4, 2); light.position.y = .55; group.add(light);
-  return { group, lid, ribbon, glow, glowMaterial, light };
+  const setOpacity = createFader(group);
+  return { group, lid, ribbon, glow, glowMaterial: glow.material as THREE.MeshBasicMaterial, light, setOpacity };
 }

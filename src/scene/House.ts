@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { box, cylinder, sphere, mesh, textPlane } from '../utils/geometry';
+import { box, cylinder, sphere, mesh, textPlane, mergeStaticMeshes } from '../utils/geometry';
 
 export function createHouse() {
   const group = new THREE.Group(); group.position.set(2.25, .12, -1.25);
@@ -39,5 +39,6 @@ export function createHouse() {
   const mailbox = new THREE.Group(); mailbox.position.set(1.15, 0, 1.47); cylinder(mailbox, .055, .07, .65, '#b38a61', [0, .32, 0]);
   box(mailbox, [.4, .28, .48], '#a3c6b5', [0, .72, 0], .13); box(mailbox, [.29, .03, .015], '#547b70', [0, .73, .248]);
   box(mailbox, [.04, .34, .04], '#d5a37f', [.24, .87, 0]); box(mailbox, [.2, .12, .04], '#da9a8d', [.31, 1, 0]); group.add(mailbox);
+  mergeStaticMeshes(group, [bell]);
   return { group, windowMaterial, bell, smokeOrigin: new THREE.Vector3(2.93, 3.5, -2.05) };
 }

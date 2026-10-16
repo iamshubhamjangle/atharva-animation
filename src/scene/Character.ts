@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { box, sphere, cylinder } from '../utils/geometry';
+import { box, sphere, createFader } from '../utils/geometry';
 
 export function createCharacter() {
   const group = new THREE.Group(), body = new THREE.Group(); group.add(body);
@@ -24,5 +24,5 @@ export function createCharacter() {
   const smileLine = new THREE.Line(new THREE.BufferGeometry().setFromPoints(smile.getPoints(12).map(p => new THREE.Vector3(p.x, p.y, 0))), new THREE.LineBasicMaterial({ color: '#8e6355' })); smileLine.position.set(0, .98, .271); body.add(smileLine);
   sphere(body, [.31, .14, .29], '#86aea5', [0, 1.28, 0]); box(body, [.46, .06, .28], '#719b94', [0, 1.25, .19], .08);
   sphere(body, [.07, .06, .02], '#f3da9d', [0, 1.32, .255]);
-  return { group, body, legs, arms };
+  return { group, body, legs, arms, setOpacity: createFader(group) };
 }

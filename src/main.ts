@@ -2,7 +2,7 @@ import './style.css';
 import { World } from './scene/World';
 import { Story } from './animation/storyTimeline';
 import { animateAmbient } from './animation/ambient';
-import { createUI, refreshIcons, updateTime } from './ui/Controls';
+import { createUI, refreshIcons, updateTime, timecode } from './ui/Controls';
 import { VideoRecorder, supportedRecordingType } from './utils/recording';
 import { CONFIG } from './config';
 
@@ -17,10 +17,10 @@ let playing = false, ambientEnabled = true, ambientTime = 0, speed = CONFIG.spee
 let recordStart = 0, recordTimer: ReturnType<typeof setTimeout> | undefined, rendering = true;
 let lastTime = -1, lastPlaying = false, lastRecording = false;
 function setPlaying(next: boolean) {
-  playing = next; ui.play.innerHTML = `<i data-lucide="${next ? 'pause' : 'play'}"></i><span>${next ? 'Pause the story' : story.clock.time >= 60 ? 'Play again' : 'Play the story'}</span>`;
+  playing = next; ui.play.innerHTML = `<i data-lucide="${next ? 'pause' : 'play'}"></i><span>${next ? 'Pause the story' : story.clock.time >= CONFIG.duration ? 'Play again' : 'Play the story'}</span>`;
   ui.play.setAttribute('aria-label', next ? 'Pause story' : 'Play story'); refreshIcons();
 }
-function playPause() { if (recorder.active) return; if (story.clock.time >= 60) story.seek(0); setPlaying(!playing); }
+function playPause() { if (recorder.active) return; if (story.clock.time >= CONFIG.duration) story.seek(0); setPlaying(!playing); }
 function seek(t: number) { if (recorder.active) return; story.seek(t); }
 function setSafe(value: boolean) { document.body.classList.toggle('safe-view', value); ui.safe.checked = value; document.querySelector<HTMLButtonElement>('#exit-safe')!.hidden = !value; }
 function lockRecording(locked: boolean) {
@@ -29,7 +29,7 @@ function lockRecording(locked: boolean) {
 }
 function endRecording() {
   if (recordTimer) clearTimeout(recordTimer); recordTimer = undefined;
-  story.seek(60); animateAmbient(world, ambientEnabled ? 60 : ambientTime, 60); world.render();
+  story.seek(CONFIG.duration); animateAmbient(world, ambientEnabled ? CONFIG.duration : ambientTime, CONFIG.duration); world.render();
   recorder.finish(); setPlaying(false); lockRecording(false);
 }
 function cancelRecording(message = 'Recording canceled. You can start again whenever you’re ready.') {
@@ -41,7 +41,7 @@ function record() {
     setPlaying(false); story.seek(0); ambientTime = 0; animateAmbient(world, 0, 0); world.render(); ui.download.hidden = true;
     recorder.start(ui.canvas, Number(ui.fps.value), url => { ui.download.href = url; ui.download.hidden = false; ui.exportStatus.textContent = 'Your little memory is ready. Save the film below.'; }, message => { cancelRecording(message); });
     recordStart = performance.now(); lockRecording(true); recordTimer = setTimeout(endRecording, CONFIG.duration * 1000);
-    ui.exportStatus.textContent = 'Recording 00:00 / 01:00 · Please keep this tab visible.';
+    ui.exportStatus.textContent = `Recording 00:00 / ${timecode(CONFIG.duration)} · Please keep this tab visible.`;
   } catch (error) { ui.exportStatus.textContent = error instanceof Error ? error.message : 'Recording could not start. Try another browser.'; lockRecording(false); }
 }
 ui.play.addEventListener('click', playPause);
@@ -71,16 +71,16 @@ function frame(now: number) {
   if (!rendering) return;
   const delta = Math.min((now - previous) / 1000, .1); previous = now;
   if (recorder.active) {
-    const time = Math.min((now - recordStart) / 1000, 60); story.seek(time); if (ambientEnabled) ambientTime = time;
-    if (time >= 60) endRecording();
+    const time = Math.min((now - recordStart) / 1000, CONFIG.duration); story.seek(time); if (ambientEnabled) ambientTime = time;
+    if (time >= CONFIG.duration) endRecording();
   } else {
-    if (playing) { story.seek(Math.min(story.clock.time + delta * speed, 60)); if (story.clock.time >= 60) setPlaying(false); }
+    if (playing && !document.hidden) { story.advance(delta * speed); if (!CONFIG.loop && story.clock.time >= CONFIG.duration) setPlaying(false); }
     if (ambientEnabled) ambientTime += delta;
   }
   animateAmbient(world, ambientTime, story.clock.time); world.render();
-  if (Math.abs(story.clock.time - lastTime) > .08 || playing !== lastPlaying || recorder.active !== lastRecording || (story.clock.time === 60 && lastTime !== 60)) {
-    const t = story.clock.time; ui.scrubber.value = String(t); ui.scrubber.style.setProperty('--progress', `${t / 60 * 100}%`); ui.scrubber.setAttribute('aria-valuetext', `${t.toFixed(1)} seconds of 60`); updateTime(t, playing, recorder.active);
-    if (recorder.active) ui.exportStatus.textContent = `Recording 00:${Math.floor(t).toString().padStart(2, '0')} / 01:00 · Keep this tab visible.`;
+  if (Math.abs(story.clock.time - lastTime) > .08 || playing !== lastPlaying || recorder.active !== lastRecording || (story.clock.time === CONFIG.duration && lastTime !== CONFIG.duration)) {
+    const t = story.clock.time; ui.scrubber.value = String(t); ui.scrubber.style.setProperty('--progress', `${t / CONFIG.duration * 100}%`); ui.scrubber.setAttribute('aria-valuetext', `${t.toFixed(1)} seconds of ${CONFIG.duration}`); updateTime(t, playing, recorder.active);
+    if (recorder.active) ui.exportStatus.textContent = `Recording ${timecode(t)} / ${timecode(CONFIG.duration)} · Keep this tab visible.`;
     lastTime = t; lastPlaying = playing; lastRecording = recorder.active;
   }
   animationFrame = requestAnimationFrame(frame);

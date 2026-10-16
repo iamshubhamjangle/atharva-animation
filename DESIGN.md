@@ -6,7 +6,8 @@ colors:
   ink: "#35544a"
   primary: "#365e4b"
   secondary-text: "#64745e"
-  sky: "#dcece9"
+  sky: "#d5e5ea"
+  film-ink: "#193f39"
   mint: "#acd5bf"
   peach: "#e9a48f"
   cream: "#fff1d6"
@@ -73,11 +74,15 @@ The scene uses lit rounded geometry, warm directional sunlight, hemisphere fill,
 
 ## Shapes
 
-Procedural rounded boxes and low-segment spheres produce the handmade toy quality. Roof panels, flower petals, picket rails, mailbox, and cart details reward close viewing without requiring external assets.
+Procedural rounded boxes and low-segment spheres produce the handmade toy quality. Roof panels, flower petals, picket rails, mailbox, and spoked bicycle details reward close viewing without requiring external assets. Butterfly wings use smooth curved geometry with a purple-to-magenta vein shader; bird wings hinge with darker undersides for visibility. Each flower patch mixes butter yellow, pink, and lavender blossoms.
 
 ## Components
 
 Primary play action is evergreen. Secondary export is outlined. Ambient and clean-view switches have independent state. Scrubber exposes seconds and a formatted time label. Chapters are navigation, with an explicit current step. A single GSAP clock owns story poses; ambient motion is a separate time source. Recording locks story mutations and captures only WebGL.
+
+Each story cycle lasts 72 seconds and repeats during normal playback. Preserve the full-name hold at 45–60 seconds, dissolve actors and balloons at 60–65, then reset the hidden bicycle, rider, and parcel. Export captures one cycle. Actor materials are cloned before fading so shared environmental materials retain their opacity. Title lettering uses unlit dark evergreen without tone mapping; balloon letters remain cream on individual curved balloons in an upward arc.
+
+One directional WindController drives spatially offset gusts through grass, trunks, canopies, stems, flower heads, windmill, and smoke. Ambient time continues across the story wrap. Cloud lanes recycle offscreen. Butterflies follow diagonal paths with independent wing phases; the flock stays to the left of the final title. The courier reaches the actual lid before a dedicated golden burst precedes balloon release.
 
 Buttons transition background, color, and opacity over 0.2 seconds; focus uses a warm brown 2px outline with a 4px offset (5px on inputs). Disabled buttons reduce opacity to 0.45. Reduced-motion preferences remove control and switch transitions. The primary action is 47px high on mobile; export is 43px. Keep the focus and disabled treatments when extending controls.
 

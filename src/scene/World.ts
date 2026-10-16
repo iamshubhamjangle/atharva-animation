@@ -9,9 +9,11 @@ import { createGiftBox } from './GiftBox';
 import { createBalloons } from './Balloons';
 import { createParticles } from './Particles';
 import { textPlane } from '../utils/geometry';
+import { WindController } from '../animation/wind';
 
 export class World {
   readonly scene = new THREE.Scene();
+  readonly wind = new WindController(CONFIG.wind);
   readonly camera: THREE.OrthographicCamera;
   readonly renderer: THREE.WebGLRenderer;
   readonly house = createHouse();
@@ -30,14 +32,16 @@ export class World {
     const height = CONFIG.camera.viewHeight, width = height * 16 / 9;
     this.camera = new THREE.OrthographicCamera(-width / 2, width / 2, height / 2, -height / 2, .1, 120);
     this.camera.position.set(...CONFIG.camera.position); this.camera.lookAt(new THREE.Vector3(...CONFIG.camera.target)); this.camera.updateMatrixWorld();
+    // Keep the low sky lane behind the cottage as it scrolls past the island.
+    this.environment.clouds[2].position.add(this.camera.getWorldDirection(new THREE.Vector3()).multiplyScalar(6));
     this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: 'high-performance' });
     this.renderer.setSize(CONFIG.width, CONFIG.height, false); this.renderer.setPixelRatio(1);
     this.renderer.shadowMap.enabled = true; this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.outputColorSpace = THREE.SRGBColorSpace; this.renderer.toneMapping = THREE.ACESFilmicToneMapping; this.renderer.toneMappingExposure = .98;
     this.scene.background = new THREE.Color(CONFIG.colors.sky); this.scene.fog = new THREE.Fog(CONFIG.colors.sky, 32, 65);
-    this.scene.add(new THREE.HemisphereLight('#fff8e6', '#9eb4a3', 1.75));
+    this.scene.add(new THREE.HemisphereLight('#fff8e6', '#779485', 1.4));
     const sun = new THREE.DirectionalLight('#fff0d3', 2.6); sun.position.set(-5, 10, 7); sun.castShadow = true;
-    sun.shadow.mapSize.set(2048, 2048); sun.shadow.camera.left = -9; sun.shadow.camera.right = 9; sun.shadow.camera.top = 9; sun.shadow.camera.bottom = -9; sun.shadow.normalBias = .035; sun.shadow.bias = -.0002; sun.shadow.radius = 5; this.scene.add(sun);
+    sun.shadow.mapSize.set(1024, 1024); sun.shadow.camera.left = -9; sun.shadow.camera.right = 9; sun.shadow.camera.top = 9; sun.shadow.camera.bottom = -9; sun.shadow.normalBias = .035; sun.shadow.bias = -.0002; sun.shadow.radius = 5; this.scene.add(sun);
     const fill = new THREE.DirectionalLight('#d5eaf1', .65); fill.position.set(6, 5, -6); this.scene.add(fill);
     // An actual receiving surface gives the floating diorama a soft, grounded shadow.
     const floor = new THREE.Mesh(new THREE.PlaneGeometry(200, 200), new THREE.MeshStandardMaterial({ color: CONFIG.colors.sky, roughness: 1 })); floor.rotation.x = -Math.PI / 2; floor.position.y = -2.35; floor.receiveShadow = true; this.scene.add(floor);
