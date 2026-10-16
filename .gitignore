@@ -1,0 +1,7 @@
+node_modules/
+.npm-cache/
+.test-build/
+dist/
+*.webm
+*.mp4
+.impeccable/review/

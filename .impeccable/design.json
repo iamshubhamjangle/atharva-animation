@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-16T06:43:03Z",
+  "title": "Design System: Little Worlds · Atharva",
+  "extensions": {
+    "colorMeta": {
+      "studio": {
+        "role": "neutral",
+        "displayName": "Studio",
+        "tonalRamp": [
+          "oklch(15.00% 0.0080 98.88)",
+          "oklch(26.43% 0.0080 98.88)",
+          "oklch(37.86% 0.0080 98.88)",
+          "oklch(49.29% 0.0080 98.88)",
+          "oklch(60.71% 0.0080 98.88)",
+          "oklch(72.14% 0.0080 98.88)",
+          "oklch(83.57% 0.0080 98.88)",
+          "oklch(95.00% 0.0080 98.88)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.0405 171.98)",
+          "oklch(26.43% 0.0405 171.98)",
+          "oklch(37.86% 0.0405 171.98)",
+          "oklch(49.29% 0.0405 171.98)",
+          "oklch(60.71% 0.0405 171.98)",
+          "oklch(72.14% 0.0405 171.98)",
+          "oklch(83.57% 0.0405 171.98)",
+          "oklch(95.00% 0.0405 171.98)"
+        ]
+      },
+      "primary": {
+        "role": "primary",
+        "displayName": "Primary",
+        "tonalRamp": [
+          "oklch(15.00% 0.0556 162.44)",
+          "oklch(26.43% 0.0556 162.44)",
+          "oklch(37.86% 0.0556 162.44)",
+          "oklch(49.29% 0.0556 162.44)",
+          "oklch(60.71% 0.0556 162.44)",
+          "oklch(72.14% 0.0556 162.44)",
+          "oklch(83.57% 0.0556 162.44)",
+          "oklch(95.00% 0.0556 162.44)"
+        ]
+      },
+      "secondary-text": {
+        "role": "neutral",
+        "displayName": "Secondary Text",
+        "tonalRamp": [
+          "oklch(15.00% 0.0386 137.18)",
+          "oklch(26.43% 0.0386 137.18)",
+          "oklch(37.86% 0.0386 137.18)",
+          "oklch(49.29% 0.0386 137.18)",
+          "oklch(60.71% 0.0386 137.18)",
+          "oklch(72.14% 0.0386 137.18)",
+          "oklch(83.57% 0.0386 137.18)",
+          "oklch(95.00% 0.0386 137.18)"
+        ]
+      },
+      "sky": {
+        "role": "neutral",
+        "displayName": "Sky",
+        "tonalRamp": [
+          "oklch(15.00% 0.0174 183.52)",
+          "oklch(26.43% 0.0174 183.52)",
+          "oklch(37.86% 0.0174 183.52)",
+          "oklch(49.29% 0.0174 183.52)",
+          "oklch(60.71% 0.0174 183.52)",
+          "oklch(72.14% 0.0174 183.52)",
+          "oklch(83.57% 0.0174 183.52)",
+          "oklch(95.00% 0.0174 183.52)"
+        ]
+      },
+      "mint": {
+        "role": "secondary",
+        "displayName": "Mint",
+        "tonalRamp": [
+          "oklch(15.00% 0.0529 161.58)",
+          "oklch(26.43% 0.0529 161.58)",
+          "oklch(37.86% 0.0529 161.58)",
+          "oklch(49.29% 0.0529 161.58)",
+          "oklch(60.71% 0.0529 161.58)",
+          "oklch(72.14% 0.0529 161.58)",
+          "oklch(83.57% 0.0529 161.58)",
+          "oklch(95.00% 0.0529 161.58)"
+        ]
+      },
+      "peach": {
+        "role": "secondary",
+        "displayName": "Peach",
+        "tonalRamp": [
+          "oklch(15.00% 0.0877 37.63)",
+          "oklch(26.43% 0.0877 37.63)",
+          "oklch(37.86% 0.0877 37.63)",
+          "oklch(49.29% 0.0877 37.63)",
+          "oklch(60.71% 0.0877 37.63)",
+          "oklch(72.14% 0.0877 37.63)",
+          "oklch(83.57% 0.0877 37.63)",
+          "oklch(95.00% 0.0877 37.63)"
+        ]
+      },
+      "cream": {
+        "role": "neutral",
+        "displayName": "Cream",
+        "tonalRamp": [
+          "oklch(15.00% 0.0384 83.83)",
+          "oklch(26.43% 0.0384 83.83)",
+          "oklch(37.86% 0.0384 83.83)",
+          "oklch(49.29% 0.0384 83.83)",
+          "oklch(60.71% 0.0384 83.83)",
+          "oklch(72.14% 0.0384 83.83)",
+          "oklch(83.57% 0.0384 83.83)",
+          "oklch(95.00% 0.0384 83.83)"
+        ]
+      },
+      "primary-hover": {
+        "role": "primary",
+        "displayName": "Primary Hover",
+        "tonalRamp": [
+          "oklch(15.00% 0.0548 160.59)",
+          "oklch(26.43% 0.0548 160.59)",
+          "oklch(37.86% 0.0548 160.59)",
+          "oklch(49.29% 0.0548 160.59)",
+          "oklch(60.71% 0.0548 160.59)",
+          "oklch(72.14% 0.0548 160.59)",
+          "oklch(83.57% 0.0548 160.59)",
+          "oklch(95.00% 0.0548 160.59)"
+        ]
+      },
+      "primary-text": {
+        "role": "primary",
+        "displayName": "Primary Text",
+        "tonalRamp": [
+          "oklch(15.00% 0.0207 88.72)",
+          "oklch(26.43% 0.0207 88.72)",
+          "oklch(37.86% 0.0207 88.72)",
+          "oklch(49.29% 0.0207 88.72)",
+          "oklch(60.71% 0.0207 88.72)",
+          "oklch(72.14% 0.0207 88.72)",
+          "oklch(83.57% 0.0207 88.72)",
+          "oklch(95.00% 0.0207 88.72)"
+        ]
+      },
+      "export-text": {
+        "role": "neutral",
+        "displayName": "Export Text",
+        "tonalRamp": [
+          "oklch(15.00% 0.0550 138.69)",
+          "oklch(26.43% 0.0550 138.69)",
+          "oklch(37.86% 0.0550 138.69)",
+          "oklch(49.29% 0.0550 138.69)",
+          "oklch(60.71% 0.0550 138.69)",
+          "oklch(72.14% 0.0550 138.69)",
+          "oklch(83.57% 0.0550 138.69)",
+          "oklch(95.00% 0.0550 138.69)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Studio heading",
+        "purpose": "Intimate editorial studio heading; responsive size is 42px at 1100px and 39px at 760px."
+      },
+      "body": {
+        "displayName": "Studio controls",
+        "purpose": "Root body face; individual labels use the smaller sizes documented by their components."
+      }
+    },
+    "shadows": [
+      {
+        "name": "preview",
+        "value": "0 16px 40px -24px #486a5555",
+        "purpose": "Restrained downward shadow beneath the film; removed in fullscreen and recording-safe view."
+      }
+    ],
+    "motion": [
+      {
+        "name": "control-transition",
+        "value": "background .2s, color .2s, opacity .2s",
+        "purpose": "Button feedback, removed under prefers-reduced-motion."
+      },
+      {
+        "name": "switch-transition",
+        "value": "background .2s; transform .2s",
+        "purpose": "Switch track and thumb, removed under prefers-reduced-motion."
+      },
+      {
+        "name": "story-duration",
+        "value": "60s",
+        "purpose": "Single deterministic GSAP story clock; camera remains fixed orthographic."
+      },
+      {
+        "name": "final-hold",
+        "value": "45–60s",
+        "purpose": "All seven letters remain readable; final frame holds indefinitely."
+      },
+      {
+        "name": "ambient-clock",
+        "value": "independent",
+        "purpose": "Environment motion continues while the story is paused, with its own switch."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile-max",
+        "value": "760px"
+      },
+      {
+        "name": "compact-max",
+        "value": "1100px"
+      },
+      {
+        "name": "wide-min",
+        "value": "1600px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary play action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Playback action; label changes with story state.",
+      "html": "<button class=\"ds-primary\">Play the story</button>",
+      "css": ".ds-primary{display:flex;align-items:center;justify-content:center;gap:9px;height:45px;background:#365e4b;color:#fff9ea;border:0;border-radius:5px;font:500 12px 'DM Sans',sans-serif;padding:0 24px;cursor:pointer;transition:background .2s,color .2s,opacity .2s}.ds-primary:hover{background:#284e3b}.ds-primary:focus-visible{outline:2px solid #aa6f58;outline-offset:4px}.ds-primary:disabled{opacity:.45;cursor:not-allowed}@media(prefers-reduced-motion:reduce){.ds-primary{transition:none}}"
+    },
+    {
+      "name": "Export action",
+      "kind": "button",
+      "refersTo": "button-export",
+      "description": "Outlined export action outside the captured canvas.",
+      "html": "<button class=\"ds-export\">Export the film</button>",
+      "css": ".ds-export{width:100%;height:41px;display:flex;align-items:center;justify-content:center;border:1px solid #cbd4bf;background:transparent;border-radius:5px;font:400 11px 'DM Sans',sans-serif;color:#5e7657;cursor:pointer;transition:background .2s,color .2s,opacity .2s}.ds-export:hover{background:#e8edde}.ds-export:focus-visible{outline:2px solid #aa6f58;outline-offset:4px}.ds-export:disabled{opacity:.45;cursor:not-allowed}@media(prefers-reduced-motion:reduce){.ds-export{transition:none}}"
+    },
+    {
+      "name": "Restart action",
+      "kind": "button",
+      "description": "Compact tonal transport control.",
+      "html": "<button class=\"ds-restart\" aria-label=\"Restart story\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M3 11a9 9 0 1 1 2.6 6.4M3 4v7h7\"/></svg></button>",
+      "css": ".ds-restart{display:grid;place-items:center;width:43px;height:45px;background:#eceee2;color:var(--ink,#35544a);border:0;border-radius:5px;cursor:pointer;transition:background .2s,color .2s,opacity .2s}.ds-restart:hover{background:#e1e6d7}.ds-restart:focus-visible{outline:2px solid #aa6f58;outline-offset:4px}.ds-restart:disabled{opacity:.45;cursor:not-allowed}@media(prefers-reduced-motion:reduce){.ds-restart{transition:none}}"
+    },
+    {
+      "name": "Ambient switch",
+      "kind": "input",
+      "description": "Independent environment motion; checked by default.",
+      "html": "<label class=\"ds-setting\">Ambient motion<input class=\"ds-checkbox\" type=\"checkbox\" checked><span class=\"ds-switch\"></span></label>",
+      "css": ".ds-setting{position:relative;display:flex;align-items:center;justify-content:space-between;gap:24px;font:400 11px 'DM Sans',sans-serif;color:var(--ink,#35544a);cursor:pointer}.ds-checkbox{position:absolute;right:0;opacity:0;width:33px;height:22px;cursor:pointer}.ds-switch{width:29px;height:17px;flex-shrink:0;background:#ced4c4;border-radius:20px;position:relative;pointer-events:none;transition:background .2s}.ds-switch:after{content:'';width:11px;height:11px;position:absolute;left:3px;top:3px;border-radius:50%;background:#fcfbf5;transition:transform .2s}.ds-checkbox:checked+.ds-switch{background:#7d9774}.ds-checkbox:checked+.ds-switch:after{transform:translateX(12px)}.ds-checkbox:focus-visible+.ds-switch{outline:2px solid #aa6f58;outline-offset:4px}@media(prefers-reduced-motion:reduce){.ds-switch,.ds-switch:after{transition:none}}"
+    },
+    {
+      "name": "Chapter navigation",
+      "kind": "nav",
+      "description": "Six chapter stops; current chapter uses a warmer numeral and green rule.",
+      "html": "<nav class=\"ds-chapters\" aria-label=\"Story chapters\"><button class=\"ds-chapter\" aria-current=\"step\"><span class=\"ds-number\">01</span>A world waiting<span class=\"ds-line\"></span></button><button class=\"ds-chapter\"><span class=\"ds-number\">02</span>The little journey<span class=\"ds-line\"></span></button></nav>",
+      "css": ".ds-chapters{display:flex;gap:13px}.ds-chapter{border:0;padding:0;text-align:left;background:none;font:400 10px/1.45 'DM Sans',sans-serif;color:#64745e;display:flex;flex-direction:column;gap:6px;cursor:pointer;transition:color .2s}.ds-number{font-size:9px;color:#64745e}.ds-line{height:2px;width:100%;margin-top:7px;background:#e3e6da}.ds-chapter[aria-current]{color:#3e644e}.ds-chapter[aria-current] .ds-number{color:#bd8b6f}.ds-chapter[aria-current] .ds-line{background:#afbc9c}.ds-chapter:hover{color:#355f4e}.ds-chapter:focus-visible{outline:2px solid #aa6f58;outline-offset:4px}@media(prefers-reduced-motion:reduce){.ds-chapter{transition:none}}"
+    },
+    {
+      "name": "Story scrubber",
+      "kind": "input",
+      "description": "Seconds-based deterministic story seek control.",
+      "html": "<label class=\"ds-range-label\">Story timeline<input class=\"ds-scrubber\" type=\"range\" min=\"0\" max=\"60\" step=\"0.01\" value=\"0\" aria-label=\"Story timeline in seconds\"></label>",
+      "css": ".ds-range-label{display:block;font:400 12px 'DM Sans',sans-serif;color:var(--ink,#35544a)}.ds-scrubber{width:100%;display:block;height:3px;appearance:none;border-radius:2px;--progress:0%;background:linear-gradient(to right,#63856a var(--progress),#dfe4d6 var(--progress));margin:18px 0 11px;cursor:pointer;accent-color:#557960}.ds-scrubber::-webkit-slider-thumb{appearance:none;width:11px;height:11px;border-radius:50%;background:#557960;border:2px solid #f7f6f0;box-shadow:0 0 0 1px #557960}.ds-scrubber::-moz-range-thumb{width:8px;height:8px;border-radius:50%;background:#557960;border:2px solid #f7f6f0}.ds-scrubber:focus-visible{outline:2px solid #aa6f58;outline-offset:5px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A warm miniature film inside a quiet recording studio.",
+    "overview": "Experience mode: the miniature film leads. The studio is warm cream, quiet, typographic, and plainly operable. The user-specified storybook toy world governs the scene; unrelated stylistic directions are excluded.",
+    "keyCharacteristics": [],
+    "rules": [],
+    "dos": [
+      "**Do** keep the camera stationary and every final letter readable.",
+      "**Do** preserve the peaceful 15-second hold.",
+      "**Do** keep all controls outside the film.",
+      "**Do** author geometry and lettering in code; no stock art is needed."
+    ],
+    "donts": [
+      "**Don't** add ornamental website cards or replace the courier with a flat icon."
+    ]
+  }
+}
